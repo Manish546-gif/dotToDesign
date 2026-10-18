@@ -1,0 +1,9 @@
+export { default as Home } from './generated/HomePage.jsx';
+export { default as Work } from './generated/WorkPage.jsx';
+export { default as Studio } from './generated/StudioPage.jsx';
+export { default as Services } from './generated/ServicesPage.jsx';
+export { default as Journal } from './generated/JournalPage.jsx';
+export { default as Article } from './generated/ArticlePage.jsx';
+export { default as CaseStudy } from './generated/CaseAvcInfraPage.jsx';
+export { default as Contact } from './generated/ContactPage.jsx';
+export { default as NotFound } from './generated/NotFoundPage.jsx';

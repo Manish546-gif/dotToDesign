@@ -1,0 +1,155 @@
+/* ==========================================================================
+   DotToDesign — Design tokens
+   Mirrors the Figma variable collections (Primitives → Color → Component,
+   Spacing, Layout, Typography, Motion, System). Names match the WEB code
+   syntax set on every Figma variable.
+   ========================================================================== */
+
+@font-face { font-family: "Garnett"; src: url("../fonts/Garnett-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Garnett"; src: url("../fonts/Garnett-Medium.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Garnett"; src: url("../fonts/Garnett-MediumItalic.woff") format("woff"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Garnett"; src: url("../fonts/Garnett-Semibold.woff") format("woff"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Garnett"; src: url("../fonts/Garnett-Bold.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  /* ---- Primitives ---------------------------------------------------- */
+  --prim-base-black: #000000;
+  --prim-base-white: #ffffff;
+  --prim-red-50: #fff0f0;  --prim-red-400: #ff4545; --prim-red-500: #ff0000;
+  --prim-red-600: #d60000; --prim-red-700: #a80000; --prim-red-900: #3d0000;
+  --prim-neutral-50: #f5f5f5;  --prim-neutral-100: #ebebeb; --prim-neutral-300: #c2c2c2;
+  --prim-neutral-400: #a6a6a6; --prim-neutral-500: #8a8a8a; --prim-neutral-600: #6b6b6b;
+  --prim-neutral-700: #4d4d4d; --prim-neutral-800: #262626; --prim-neutral-850: #1a1a1a;
+  --prim-neutral-900: #111111; --prim-neutral-950: #0a0a0a;
+  --prim-green-400: #4ade80; --prim-green-600: #15803d;
+  --prim-blue-400: #60a5fa;  --prim-blue-600: #1d4ed8;
+
+  /* ---- Spacing (4pt) / radius / size --------------------------------- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px; --space-5: 20px;
+  --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px;
+  --space-20: 80px; --space-24: 96px; --space-32: 128px; --space-40: 160px;
+  --radius-xs: 4px; --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px; --radius-xl: 32px; --radius-full: 999px;
+  --border-width-hairline: 1px; --border-width-strong: 2px;
+  --size-touch-min: 48px; --size-control-sm: 40px; --size-control-md: 48px;
+
+  /* ---- Layout (Desktop mode; Tablet/Mobile overrides below) ---------- */
+  --layout-content-max: 1440px;
+  --layout-margin: 40px;
+  --layout-gutter: 24px;
+  --layout-section-y: 160px;
+  --layout-stack-lg: 64px;
+  --layout-header-height: 88px;
+
+  /* ---- Typography ---------------------------------------------------- */
+  --font-family-brand: "Garnett", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-mono: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-size-display-xl: clamp(64px, 11.1vw, 160px);
+  --font-size-display-lg: clamp(52px, 8.3vw, 120px);
+  --font-size-display-md: clamp(42px, 6.1vw, 88px);
+  --font-size-heading-1: clamp(38px, 4.45vw, 64px);
+  --font-size-heading-2: clamp(30px, 3.35vw, 48px);
+  --font-size-heading-3: clamp(26px, 2.5vw, 36px);
+  --font-size-heading-4: clamp(21px, 1.95vw, 28px);
+  --font-size-heading-5: clamp(18px, 1.55vw, 22px);
+  --font-size-body-xl: clamp(19px, 1.67vw, 24px);
+  --font-size-body-lg: clamp(17px, 1.4vw, 20px);
+  --font-size-body-md: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-label-lg: 16px;
+  --font-size-label-md: 14px;
+  --font-size-caption: 12px;
+  --font-size-numeric-xl: clamp(64px, 8.3vw, 120px);
+  --font-size-numeric-lg: clamp(40px, 4.45vw, 64px);
+
+  /* ---- Motion -------------------------------------------------------- */
+  --duration-instant: 100ms; --duration-fast: 200ms; --duration-base: 400ms;
+  --duration-slow: 700ms; --duration-slower: 1000ms; --duration-cinematic: 1400ms;
+  --easing-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --easing-in: cubic-bezier(0.55, 0, 1, 0.45);
+
+  /* ---- System -------------------------------------------------------- */
+  --z-raised: 10; --z-sticky: 20; --z-header: 50; --z-dock: 60; --z-overlay: 90;
+  --z-modal: 100; --z-toast: 110; --z-curtain: 200; --z-cursor: 9999;
+}
+
+/* ---- Semantic colour · Dark (default) -------------------------------- */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg-canvas: var(--prim-base-black);
+  --color-bg-surface: var(--prim-neutral-900);
+  --color-bg-surface-raised: var(--prim-neutral-850);
+  --color-bg-surface-sunken: var(--prim-neutral-950);
+  --color-bg-surface-hover: var(--prim-neutral-800);
+  --color-bg-inverse: var(--prim-base-white);
+  --color-bg-accent: var(--prim-red-500);
+  --color-bg-accent-hover: var(--prim-red-400);
+  --color-bg-accent-pressed: var(--prim-red-600);
+  --color-bg-accent-subtle: var(--prim-red-900);
+  --color-bg-glass: rgba(255, 255, 255, 0.08);
+  --color-bg-overlay: rgba(0, 0, 0, 0.64);
+  --color-bg-disabled: var(--prim-neutral-800);
+  --color-text-primary: var(--prim-base-white);
+  --color-text-secondary: var(--prim-neutral-400);
+  --color-text-tertiary: var(--prim-neutral-500);
+  --color-text-disabled: var(--prim-neutral-700);
+  --color-text-inverse: var(--prim-base-black);
+  --color-text-accent: var(--prim-red-500);
+  --color-text-on-accent: var(--prim-base-black);
+  --color-text-success: var(--prim-green-400);
+  --color-text-error: var(--prim-red-400);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-default: rgba(255, 255, 255, 0.16);
+  --color-border-strong: rgba(255, 255, 255, 0.40);
+  --color-border-accent: var(--prim-red-500);
+  --color-border-focus: var(--prim-base-white);
+  --color-border-error: var(--prim-red-400);
+  --color-motif-grid-line: rgba(255, 255, 255, 0.08);
+  --color-motif-cursor-line: rgba(255, 255, 255, 0.16);
+  --color-motif-glow: rgba(255, 0, 0, 0.40);
+  --glow-strength: 1;
+}
+
+/* ---- Semantic colour · Light ---------------------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-bg-canvas: var(--prim-base-white);
+  --color-bg-surface: var(--prim-neutral-50);
+  --color-bg-surface-raised: var(--prim-base-white);
+  --color-bg-surface-sunken: var(--prim-neutral-100);
+  --color-bg-surface-hover: var(--prim-neutral-100);
+  --color-bg-inverse: var(--prim-base-black);
+  --color-bg-accent-hover: var(--prim-red-600);
+  --color-bg-accent-pressed: var(--prim-red-700);
+  --color-bg-accent-subtle: var(--prim-red-50);
+  --color-bg-glass: rgba(0, 0, 0, 0.04);
+  --color-bg-overlay: rgba(0, 0, 0, 0.40);
+  --color-bg-disabled: var(--prim-neutral-100);
+  --color-text-primary: var(--prim-base-black);
+  --color-text-secondary: var(--prim-neutral-700);
+  --color-text-tertiary: var(--prim-neutral-600);
+  --color-text-disabled: var(--prim-neutral-300);
+  --color-text-inverse: var(--prim-base-white);
+  --color-text-accent: var(--prim-red-600);
+  --color-text-success: var(--prim-green-600);
+  --color-text-error: var(--prim-red-600);
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-default: rgba(0, 0, 0, 0.16);
+  --color-border-strong: rgba(0, 0, 0, 0.40);
+  --color-border-accent: var(--prim-red-600);
+  --color-border-focus: var(--prim-base-black);
+  --color-border-error: var(--prim-red-600);
+  --color-motif-grid-line: rgba(0, 0, 0, 0.08);
+  --color-motif-cursor-line: rgba(0, 0, 0, 0.16);
+  --color-motif-glow: rgba(255, 0, 0, 0.24);
+  --glow-strength: 0.55;
+}
+
+/* ---- Layout modes: Tablet / Mobile ---------------------------------- */
+@media (max-width: 1100px) {
+  :root { --layout-margin: 32px; --layout-gutter: 20px; --layout-section-y: 120px; --layout-stack-lg: 48px; --layout-header-height: 72px; }
+}
+@media (max-width: 767px) {
+  :root { --layout-margin: 16px; --layout-gutter: 16px; --layout-section-y: 80px; --layout-stack-lg: 40px; --layout-header-height: 64px; }
+}

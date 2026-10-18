@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="dark" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="DotToDesign — Engineered identities for global brands. Strategy, branding, web and performance ads from one studio with zero translation loss." />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://dot-todesign.com/" />
+    <meta property="og:title"       content="DotToDesign — Engineered Identities" />
+    <meta property="og:description" content="Strategy, identity, web and ads from one team — nothing lost in hand-offs." />
+    <meta property="og:image"       content="/assets/img/avc-tower.jpg" />
+    <meta name="twitter:card"       content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/svg/logo-mark.svg" type="image/svg+xml" />
+
+    <!-- Preconnect to Google Fonts (Space Mono is used as mono fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload the two Garnett weights used in the LCP hero title -->
+    <link rel="preload" href="/assets/fonts/Garnett-Semibold.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/assets/fonts/Garnett-Medium.woff" as="font" type="font/woff" crossorigin />
+
+    <!-- Preload the first LCP hero image (first ticker image, fetchPriority=high) -->
+    <link rel="preload" href="/assets/img/avc-tower.jpg" as="image" fetchpriority="high" />
+
+    <title>DotToDesign</title>
+
+    <!-- Inline: unblock JS class so CSS reveal animations start immediately -->
+    <script>document.documentElement.classList.remove('no-js');</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
