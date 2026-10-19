@@ -56,7 +56,7 @@ const introLength = 0.8; // timeline units used by the image-split opening
 
 // Set DEBUG to true while testing: shows ScrollTrigger markers and logs
 // anything in the parent chain that can break pinning (check the console).
-const DEBUG = true;
+const DEBUG = false;
 // Smooths touch scrolling and fixes address-bar jitter on phones.
 // Turn this off if the site already uses Lenis / Locomotive / ScrollSmoother.
 const NORMALIZE_MOBILE = true;
