@@ -174,6 +174,7 @@ export function mountPageRuntime(scope, page, pathname, navigate) {
     // Page-exit transition: slide curtain in, then SPA navigate
     let isNavigating = false;
     on(document, 'click', e => {
+      if (e.defaultPrevented) return;
       const link = e.target.closest('a');
       const internal =
         link &&

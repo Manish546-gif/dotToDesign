@@ -318,13 +318,16 @@ export default function HomePage() {
                   <p className="t-bracket" data-reveal>(Portfolio ©26)</p>
                   <div className="sec-head__row">
                     <h2 className="t-h1" id="work-h" data-split>Selected work</h2>
-                    <GhostLink href="/work">View all work</GhostLink>
+                    <button className="btn btn--ghost" type="button" disabled aria-disabled="true">
+                      <span className="roll">Coming soon</span>
+                      <ArrowIcon />
+                    </button>
                   </div>
                 </div>
                 <div className="stack-list">
                   {WORK.map((w) => (
                     <div className="stack-item" key={w.name}>
-                      <a className="work-card" href={w.href} data-cursor="View Work">
+                      <a className="work-card" data-cursor="Coming soon" aria-disabled="true" tabIndex={-1} onClick={event => event.preventDefault()}>
                         <div className="work-card__media">
                           <img src={img(w.img)} alt={w.alt} loading="lazy" decoding="async" />
                         </div>
