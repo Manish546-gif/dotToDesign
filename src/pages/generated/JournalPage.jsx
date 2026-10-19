@@ -124,8 +124,8 @@ export default function JournalPage() {
               <div className="card cta__inner" style={{textAlign: 'center', padding: '80px 24px', borderRadius: 'var(--radius-xl)'}}>
                 <p className="t-bracket" data-reveal>(Newsletter)</p>
                 <h2 className="t-h2" id="nl" data-split>One engineered insight, every other Friday.</h2>
-                <form className="cta__form" data-validate data-success="Youâ€™re subscribed" data-success-msg="See you in two Fridays." data-reveal>
-                  <div className="field"><label htmlFor="j-email">Email</label><input id="j-email" type="email" placeholder="you@company.com" required /><span className="hint" data-default="No spam. Unsubscribe anytime.">No spam. Unsubscribe anytime.</span></div>
+                <form className="cta__form" data-validate data-emailjs-type="newsletter signup" data-success="Youâ€™re subscribed" data-success-msg="See you in two Fridays." data-reveal>
+                  <div className="field"><label htmlFor="j-email">Email</label><input id="j-email" name="email" type="email" placeholder="you@company.com" required /><span className="hint" data-default="No spam. Unsubscribe anytime.">No spam. Unsubscribe anytime.</span></div>
                   <button className="btn" type="submit" style={{marginBottom: 26}}><span className="roll">Subscribe</span></button>
                 </form>
               </div>

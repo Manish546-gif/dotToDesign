@@ -80,6 +80,7 @@ export default function CaseAvcInfraPage() {
           <a className="nav-link" data-nav="contact" href="/contact">Contact</a>
         </nav>
         <main id="main">
+          {/* Individual case study temporarily hidden.
           <section className="case-hero" aria-label="AVC Infra">
             <img src="assets/img/avc-hero.jpg" alt="AVC Infra monogram and wordmark over a glass tower" data-parallax="0.12" />
             <div className="case-hero__text">
@@ -141,6 +142,15 @@ export default function CaseAvcInfraPage() {
                 <img src="assets/img/rivanya-hero.jpg" alt="" loading="lazy" />
                 <div><p className="t-bracket" style={{color: 'rgba(255,255,255,.75)'}}>(Next project)</p><p className="t-display-lg">Rivanya</p><p className="t-body-lg" style={{opacity: '.8'}}>Where culture inspires style</p></div>
               </a>
+            </div>
+          </section>
+          */}
+          <section className="section" aria-labelledby="case-coming-soon" style={{paddingTop: 'calc(var(--layout-header-height) + 96px)'}}>
+            <div className="container cta__inner">
+              <p className="t-bracket" data-reveal>(Case studies)</p>
+              <h1 className="t-display-lg" id="case-coming-soon" data-split>Project stories are coming soon.</h1>
+              <p className="t-body-xl c-secondary" data-reveal>For details about our work, get in touch with us.</p>
+              <a className="btn" href="/contact" data-magnetic data-reveal><span className="roll">Contact us</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7" /><path d="M8 7h9v9" /></svg></a>
             </div>
           </section>
         </main>

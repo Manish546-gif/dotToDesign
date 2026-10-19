@@ -148,6 +148,7 @@ export default function ServicesPage() {
               </ol>
             </div>
           </section>
+          {/* Pricing section temporarily hidden.
           <section className="section" aria-labelledby="inv" style={{paddingTop: 0}}>
             <div className="container">
               <div className="sec-head"><p className="t-bracket" data-reveal>(The investment)</p><h2 className="t-h1" id="inv" data-split>Three levels of engagement.</h2></div>
@@ -158,6 +159,7 @@ export default function ServicesPage() {
               </div>
             </div>
           </section>
+          */}
           <section className="section" aria-labelledby="faq" style={{paddingTop: 0}}>
             <div className="container">
               <div className="sec-head"><p className="t-bracket" data-reveal>(FAQ)</p><h2 className="t-h1" id="faq" data-split>Questions, answered.</h2></div>

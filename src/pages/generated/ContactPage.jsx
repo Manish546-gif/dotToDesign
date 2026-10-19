@@ -85,7 +85,7 @@ export default function ContactPage() {
             <div className="container contact-grid" style={{position: 'relative'}}>
               <div className="stack" style={{'--stack-gap': '28px'}}>
                 <p className="t-bracket" data-reveal>(Contact us)</p>
-                <h1 className="t-display-lg" id="c-title" data-split>Letâ€™s engineer your future.</h1>
+                <h1 className="t-display-lg" id="c-title" data-split>Let Us engineer your future.</h1>
                 <p className="t-body-lg c-secondary" style={{maxWidth: 540}} data-reveal>Tell us where your brand is today and where it needs to be. We reply within 24 hours with a Loom walkthrough of next steps.</p>
                 <dl className="stack" style={{'--stack-gap': '20px'}} data-reveal-group>
                   <div data-reveal><dt className="t-bracket">(Email)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a></dd></div>
@@ -93,7 +93,7 @@ export default function ContactPage() {
                   <div data-reveal><dt className="t-bracket">(Website)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="https://dot-todesign.com">dot-todesign.com</a></dd></div>
                 </dl>
               </div>
-              <form className="contact-form" data-validate data-success="Brief received" data-success-msg="Weâ€™ll reply within 24 hours with a Loom walkthrough." data-reveal>
+              <form className="contact-form" data-validate data-emailjs-type="project brief" data-success="Brief received" data-success-msg="Weâ€™ll reply within 24 hours with a Loom walkthrough." data-reveal>
                 <h2 className="t-h4">Start a project</h2>
                 <div className="field"><label htmlFor="c-name">Name</label><input id="c-name" name="name" autoComplete="name" placeholder="Your full name" required /><span className="hint" data-default /></div>
                 <div className="field"><label htmlFor="c-email">Email</label><input id="c-email" name="email" type="email" autoComplete="email" placeholder="you@company.com" required /><span className="hint" data-default /></div>

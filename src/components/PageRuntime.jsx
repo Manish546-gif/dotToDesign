@@ -343,7 +343,7 @@ export function mountPageRuntime(scope, page, pathname, navigate) {
   // ── Form validation ──────────────────────────────────────────────────────
   qa('form[data-validate]').forEach(form => {
     form.setAttribute('novalidate', '');
-    on(form, 'submit', e => {
+    on(form, 'submit', async e => {
       e.preventDefault();
       let valid = true;
       qa('[required]', form).forEach(input => {
@@ -364,13 +364,53 @@ export function mountPageRuntime(scope, page, pathname, navigate) {
       if (!valid) {
         q('.is-error input, .is-error textarea', form)?.focus();
       } else {
-        form.reset();
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.setAttribute('role', 'status');
-        toast.textContent = form.dataset.success || 'Brief received';
         body.appendChild(toast);
-        window.setTimeout(() => toast.remove(), 5000);
+        const submitButton = q('[type="submit"]', form);
+        if (submitButton) submitButton.disabled = true;
+
+        try {
+          const { VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY } = import.meta.env;
+          if (!VITE_EMAILJS_SERVICE_ID || !VITE_EMAILJS_TEMPLATE_ID || !VITE_EMAILJS_PUBLIC_KEY) {
+            throw new Error('EmailJS is not configured. Add its service ID, template ID, and public key to the Vite environment.');
+          }
+
+          const formData = new FormData(form);
+          const selectedEngagement = q('[data-toggle][aria-pressed="true"]', form)?.textContent.trim() || '';
+          const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              service_id: VITE_EMAILJS_SERVICE_ID,
+              template_id: VITE_EMAILJS_TEMPLATE_ID,
+              user_id: VITE_EMAILJS_PUBLIC_KEY,
+              template_params: {
+                form_type: form.dataset.emailjsType || 'website contact',
+                name: formData.get('name') || 'Website visitor',
+                email: formData.get('email') || '',
+                reply_to: formData.get('email') || '',
+                brand: formData.get('brand') || '',
+                engagement: selectedEngagement,
+                message: formData.get('message') || '',
+              },
+            }),
+          });
+          if (!response.ok) throw new Error(`EmailJS request failed (${response.status}).`);
+
+          form.reset();
+          toast.textContent = form.dataset.success || 'Message sent';
+          window.setTimeout(() => toast.remove(), 5000);
+        } catch (error) {
+          toast.textContent = 'Unable to send right now. Please try again or email hello@dot-todesign.com.';
+          console.error(error);
+          window.setTimeout(() => toast.remove(), 7000);
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        }
       }
     });
   });

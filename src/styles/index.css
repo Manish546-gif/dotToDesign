@@ -333,3 +333,6 @@ html.js [data-reveal] {
 .rolling-link:focus-visible .rolling-arrow-box {
   transform: translate(2px, -2px);
 }
+.split-inner{
+  margin-right: 0.25em;
+}

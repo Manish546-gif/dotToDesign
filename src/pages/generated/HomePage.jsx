@@ -464,10 +464,10 @@ export default function HomePage() {
                 </span>
                 <h2 className="t-display-lg" id="cta-h" data-split>Let’s build your brand.</h2>
                 <p className="t-body-xl c-secondary" data-reveal>Stop blending in. Start standing out.</p>
-                <form className="cta__form" data-validate data-reveal>
+                <form className="cta__form" data-validate data-emailjs-type="discovery call request" data-reveal>
                   <div className="field">
                     <label htmlFor="cta-email">Email</label>
-                    <input id="cta-email" type="email" placeholder="you@company.com" required />
+                    <input id="cta-email" name="email" type="email" placeholder="you@company.com" required />
                     <span className="hint" data-default="We reply within 24 hours">We reply within 24 hours</span>
                   </div>
                   <button className="btn" type="submit" data-magnetic style={{ marginBottom: 26 }}>

@@ -553,6 +553,11 @@ button.tag--pill:hover {
   transition: width var(--duration-base) var(--easing-out), height var(--duration-base) var(--easing-out), margin var(--duration-base) var(--easing-out), opacity var(--duration-fast);
 }
 
+[data-theme="light"] .cursor__dot {
+  background: #000;
+  mix-blend-mode: normal;
+}
+
 .cursor__label {
   position: absolute;
   left: 0;
