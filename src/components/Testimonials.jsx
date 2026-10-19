@@ -52,6 +52,48 @@ const totalLabel = String(total).padStart(2, "0");
 const stackY = 30;
 const stackScale = 0.05;
 const endHold = 0.5;
+const introLength = 0.8; // timeline units used by the image-split opening
+
+// Set DEBUG to true while testing: shows ScrollTrigger markers and logs
+// anything in the parent chain that can break pinning (check the console).
+const DEBUG = true;
+// Smooths touch scrolling and fixes address-bar jitter on phones.
+// Turn this off if the site already uses Lenis / Locomotive / ScrollSmoother.
+const NORMALIZE_MOBILE = true;
+
+function logPinBlockers(section) {
+  let el = section.parentElement;
+  while (el && el !== document.documentElement) {
+    const s = getComputedStyle(el);
+    const problems = [];
+    if (s.transform !== "none") problems.push(`transform: ${s.transform}`);
+    if (s.filter !== "none") problems.push(`filter: ${s.filter}`);
+    if (s.perspective !== "none") problems.push(`perspective: ${s.perspective}`);
+    if (s.willChange && /transform|filter|perspective/.test(s.willChange))
+      problems.push(`will-change: ${s.willChange}`);
+    if (s.contain && /paint|layout|strict|content/.test(s.contain))
+      problems.push(`contain: ${s.contain}`);
+    if (/(hidden|auto|scroll|clip)/.test(s.overflowY))
+      problems.push(`overflow-y: ${s.overflowY}`);
+    if (/(hidden|auto|scroll|clip)/.test(s.overflowX))
+      problems.push(`overflow-x: ${s.overflowX}`);
+    if (problems.length) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[Testimonials] ancestor may break pinning:",
+        el,
+        problems.join(" | "),
+      );
+    }
+    el = el.parentElement;
+  }
+  const html = getComputedStyle(document.documentElement);
+  const body = getComputedStyle(document.body);
+  // eslint-disable-next-line no-console
+  console.log("[Testimonials] html overflow:", html.overflowX, html.overflowY,
+    "| body overflow:", body.overflowX, body.overflowY,
+    "| body height:", body.height);
+}
 
 function DotToDesignMark() {
   return (
@@ -83,218 +125,262 @@ export default function Testimonials() {
   const mobileCounterRef = useRef(null);
   const leftHalfRef = useRef(null);
   const rightHalfRef = useRef(null);
-  const openingBackdropRef = useRef(null);
-  const openingContentRef = useRef(null);
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return undefined;
+
     const counters = () =>
       [counterRef.current, mobileCounterRef.current].filter(Boolean);
+
     let currentIndex = -1;
     const setCounter = (index) => {
       if (index === currentIndex) return;
       currentIndex = index;
-      counters().forEach((element) => {
-        element.textContent = String(index + 1).padStart(2, "0");
+      counters().forEach((el) => {
+        el.textContent = String(index + 1).padStart(2, "0");
       });
       gsap.fromTo(
         counters(),
-        { yPercent: 40, opacity: 1 },
-        {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.35,
-          ease: "power2.out",
-          overwrite: true,
-        },
+        { yPercent: 40 },
+        { yPercent: 0, duration: 0.35, ease: "power2.out", overwrite: true },
       );
     };
+
     const media = gsap.matchMedia();
-    let openingTimeline;
-    if (!reducedMotion) {
-      openingTimeline = gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=70%",
-            scrub: 0.9,
-            invalidateOnRefresh: true,
-          },
-        })
-        .to(leftHalfRef.current, { xPercent: -100, ease: "none" }, 0)
-        .to(rightHalfRef.current, { xPercent: 100, ease: "none" }, 0)
-        .to(openingBackdropRef.current, { opacity: 1, ease: "none" }, 0.35)
-        .to(
-          openingContentRef.current,
-          { opacity: 1, ease: "power2.out" },
-          0.68,
-        );
-    } else {
-      gsap.set(leftHalfRef.current, { xPercent: -100 });
-      gsap.set(rightHalfRef.current, { xPercent: 100 });
-      gsap.set(openingBackdropRef.current, { opacity: 1 });
-      gsap.set(openingContentRef.current, { opacity: 1 });
-    }
-    const build = ({ isDesktop }) => {
-      const cards = cardsRef.current.slice(0, total).filter(Boolean);
-      if (cards.length !== total) return undefined;
-      const cardWidth = () => cards[0].offsetWidth;
-      const cardHeight = () => cards[0].offsetHeight;
-      const driftX = (index) =>
-        (index % 2 === 0 ? 1 : -1) * cardWidth() * (isDesktop ? 0.3 : 0.18);
-      const tilt = (index) => (index % 2 === 0 ? 10 : -10);
-      cards.forEach((card, index) =>
-        gsap.set(card, {
-          zIndex: total - index,
-          transformPerspective: 1400,
-          transformOrigin: "50% 0%",
-          x: 0,
-          rotation: 0,
-          rotationX: 0,
-          y: reducedMotion ? 0 : index * stackY,
-          scale: reducedMotion ? 1 : 1 - index * stackScale,
-          opacity: 1,
-          force3D: true,
-        }),
-      );
-      const timeline = gsap.timeline({
-        defaults: { ease: "power2.inOut" },
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${(total - 1) * (isDesktop ? 90 : 75)}%`,
-          pin: true,
-          pinSpacing: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          snap: reducedMotion
-            ? undefined
-            : {
-                snapTo: "labels",
-                duration: { min: 0.3, max: 0.8 },
-                delay: 0.12,
-                ease: "power2.inOut",
-              },
-          onUpdate: () =>
-            setCounter(
-              Math.min(total - 1, Math.max(0, Math.round(timeline.time()))),
-            ),
-        },
-      });
-      cards.forEach((_, index) => timeline.addLabel(`card${index}`, index));
-      for (let index = 0; index < total - 1; index += 1) {
-        const card = cards[index];
-        if (reducedMotion) {
-          timeline.to(card, { opacity: 1, duration: 1, ease: "none" }, index);
-          timeline.to(
-            cards[index + 1],
-            { opacity: 1, duration: 1, ease: "none" },
-            index,
-          );
-          continue;
-        }
-        timeline.to(
-          card,
-          {
-            rotation: tilt(index),
-            rotationX: 100,
-            x: () => driftX(index),
-            y: () => -cardHeight() * 0.22,
-            duration: 1,
-          },
-          index,
-        );
-        timeline.to(
-          card,
-          { opacity: 1, duration: 0.25, ease: "none" },
-          index + 0.75,
-        );
-        for (let next = index + 1; next < total; next += 1) {
-          const depth = next - index - 1;
-          timeline.to(
-            cards[next],
-            { y: depth * stackY, scale: 1 - depth * stackScale, duration: 1 },
-            index,
-          );
-        }
-      }
-      timeline.to({}, { duration: endHold }, total - 1);
-      return () => {
-        currentIndex = -1;
-      };
-    };
+
     media.add(
       {
         isDesktop: "(min-width: 768px)",
+        isMobile: "(max-width: 767px)",
         reduceMotion: "(prefers-reduced-motion: reduce)",
       },
-      (context) => build({ isDesktop: context.conditions.isDesktop }),
+      (context) => {
+        const { isDesktop, reduceMotion } = context.conditions;
+        const cards = cardsRef.current.slice(0, total).filter(Boolean);
+        if (!total || cards.length !== total) return undefined;
+
+        const intro = reduceMotion ? 0 : introLength;
+        const duration = intro + (total - 1) + endHold;
+        const vhPerUnit = isDesktop ? 90 : 75;
+
+        const cardWidth = () => cards[0].offsetWidth;
+        const cardHeight = () => cards[0].offsetHeight;
+        const driftX = (i) =>
+          (i % 2 === 0 ? 1 : -1) * cardWidth() * (isDesktop ? 0.3 : 0.18);
+        const tilt = (i) => (i % 2 === 0 ? 10 : -10);
+
+        // initial card stack
+        cards.forEach((card, i) =>
+          gsap.set(card, {
+            zIndex: total - i,
+            transformPerspective: 1400,
+            transformOrigin: "50% 0%",
+            x: 0,
+            rotation: 0,
+            rotationX: 0,
+            y: reduceMotion ? 0 : i * stackY,
+            scale: reduceMotion ? 1 : 1 - i * stackScale,
+            opacity: 1,
+            force3D: true,
+          }),
+        );
+
+        // snap only AFTER the opening phase, so it can't fight the image split
+        const snapTo = (progress) => {
+          const t = progress * duration;
+          if (t < intro) return progress;
+          const snapped = Math.round(Math.min(t - intro, total - 1));
+          return (intro + snapped) / duration;
+        };
+
+        const timeline = gsap.timeline({
+          defaults: { ease: "power2.inOut" },
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${duration * vhPerUnit}%`,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            markers: DEBUG,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            snap: reduceMotion
+              ? undefined
+              : {
+                  snapTo,
+                  duration: { min: 0.3, max: 0.8 },
+                  delay: 0.12,
+                  ease: "power2.inOut",
+                },
+            onUpdate: () =>
+              setCounter(
+                Math.min(
+                  total - 1,
+                  Math.max(0, Math.round(timeline.time() - intro)),
+                ),
+              ),
+          },
+        });
+
+        // Phase 1: image halves open (no backdrop/content fade)
+        if (intro > 0) {
+          timeline
+            .to(
+              leftHalfRef.current,
+              { xPercent: -100, duration: intro, ease: "none" },
+              0,
+            )
+            .to(
+              rightHalfRef.current,
+              { xPercent: 100, duration: intro, ease: "none" },
+              0,
+            );
+        } else {
+          gsap.set(leftHalfRef.current, { xPercent: -100 });
+          gsap.set(rightHalfRef.current, { xPercent: 100 });
+        }
+
+        // Phase 2: cards
+        cards.forEach((_, i) => timeline.addLabel(`card${i}`, intro + i));
+
+        for (let i = 0; i < total - 1; i += 1) {
+          const at = intro + i;
+          const card = cards[i];
+
+          if (reduceMotion) {
+            timeline.to(card, { opacity: 0, duration: 1, ease: "none" }, at);
+            continue;
+          }
+
+          timeline.to(
+            card,
+            {
+              rotation: tilt(i),
+              rotationX: 100,
+              x: () => driftX(i),
+              y: () => -cardHeight() * 0.22,
+              duration: 1,
+            },
+            at,
+          );
+          timeline.to(
+            card,
+            { opacity: 0, duration: 0.25, ease: "none" },
+            at + 0.75,
+          );
+
+          for (let next = i + 1; next < total; next += 1) {
+            const depth = next - i - 1;
+            timeline.to(
+              cards[next],
+              { y: depth * stackY, scale: 1 - depth * stackScale, duration: 1 },
+              at,
+            );
+          }
+        }
+
+        timeline.to({}, { duration: endHold }, intro + total - 1);
+
+        return () => {
+          currentIndex = -1;
+        };
+      },
     );
+
+    if (DEBUG) logPinBlockers(section);
+
+    const normalizer =
+      NORMALIZE_MOBILE && ScrollTrigger.isTouch
+        ? ScrollTrigger.normalizeScroll(true)
+        : null;
+
     const refresh = () => ScrollTrigger.refresh();
     document.fonts?.ready.then(refresh);
     window.addEventListener("load", refresh);
+    // images change layout once decoded; refresh again after a short delay
+    const lateRefresh = window.setTimeout(refresh, 600);
+
     return () => {
+      window.clearTimeout(lateRefresh);
+      normalizer?.kill();
       window.removeEventListener("load", refresh);
-      openingTimeline?.scrollTrigger?.kill();
-      openingTimeline?.kill();
       gsap.killTweensOf(counters());
       media.revert();
     };
-  }, [reducedMotion]);
+  }, []);
 
   return (
     <section
       ref={sectionRef}
       id="testimonials"
       aria-label="Testimonials"
-      className="testimonials-react relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden select-none"
+      className="testimonials-react relative flex w-full items-center justify-center overflow-hidden select-none"
+      style={{ height: "100vh", minHeight: "100svh" }}
     >
+      {/* backdrop is always visible */}
       <div
-        ref={openingBackdropRef}
-        className="testimonials-react__backdrop absolute inset-0 z-0 opacity-0"
+        className="testimonials-react__backdrop absolute inset-0 z-0"
         aria-hidden="true"
       />
+
+      {/* image halves */}
       <div
         className="testimonials-react__opening absolute inset-0 z-30 overflow-hidden pointer-events-none"
         aria-hidden="true"
       >
         <div
           ref={leftHalfRef}
-          className="absolute inset-y-0 left-0 w-1/2 will-change-transform"
+          className="absolute top-0 left-0 h-full w-1/2 will-change-transform"
         >
           <img
             src={leftHalf}
             alt=""
-            loading="lazy"
+            loading="eager"
             decoding="async"
             draggable="false"
-            className="h-full w-full object-cover object-center select-none"
+            className="select-none"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              maxWidth: "none",
+              objectFit: "cover",
+              objectPosition: "right center",
+            }}
           />
         </div>
         <div
           ref={rightHalfRef}
-          className="absolute inset-y-0 right-0 w-1/2 will-change-transform"
+          className="absolute top-0 right-0 h-full w-1/2 will-change-transform"
         >
           <img
             src={rightHalf}
             alt=""
-            loading="lazy"
+            loading="eager"
             decoding="async"
             draggable="false"
-            className="h-full w-full object-cover object-center select-none"
+            className="select-none"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              maxWidth: "none",
+              objectFit: "cover",
+              objectPosition: "left center",
+            }}
           />
         </div>
       </div>
-      <div
-        ref={openingContentRef}
-        className="relative z-10 w-full max-w-[1520px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20 opacity-0"
-      >
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+
+      {/* content: always visible, sits under the images until they split */}
+      <div className="relative z-10 w-full max-w-[1520px] mx-auto px-6 sm:px-10 md:px-16 lg:px-20">
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 md:gap-6">
           <div className="w-full md:w-1/5 flex justify-between md:justify-start items-center">
             <span className="testimonials-react__eyebrow">(Testimonials)</span>
             <div
@@ -306,8 +392,9 @@ export default function Testimonials() {
               <span>{totalLabel}</span>
             </div>
           </div>
+
           <div className="w-full md:w-3/5 flex justify-center items-center relative">
-            <div className="relative h-[min(52svh,480px)] w-[min(23rem,78vw)] sm:w-[380px] md:w-[410px] mb-20 md:mb-18">
+            <div className="relative h-[min(52svh,480px)] w-[min(23rem,78vw)] sm:w-[380px] md:w-[410px] mt-4 md:mt-0 md:mb-18">
               {testimonials.map((testimonial, index) => (
                 <article
                   key={testimonial.id}
@@ -338,11 +425,13 @@ export default function Testimonials() {
                       ))}
                     </div>
                   </div>
+
                   <blockquote className="my-auto py-5 sm:py-6">
                     <p className="testimonials-react__quote">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </blockquote>
+
                   <div className="flex items-center gap-3 pt-2">
                     <img
                       src={testimonial.avatar}
@@ -367,6 +456,7 @@ export default function Testimonials() {
               ))}
             </div>
           </div>
+
           <div
             className="hidden md:flex w-1/5 justify-end items-center"
             aria-hidden="true"
