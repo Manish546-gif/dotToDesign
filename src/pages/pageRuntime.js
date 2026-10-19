@@ -27,5 +27,16 @@ export function usePageRuntime(page) {
     return mountPageRuntime(root, page, location.pathname, navigate);
   }, [location.pathname, page, navigate]);
 
+  useEffect(() => {
+    if (!location.hash) return undefined;
+
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView();
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.hash, location.pathname]);
+
   return rootRef;
 }
