@@ -83,7 +83,7 @@ export default function CookiePolicyPage() {
           </li>
           <li>
             <strong>Contact form delivery.</strong> Messages sent through our contact form are
-            delivered using EmailJS.
+            delivered using Resend.
           </li>
           <li>
             <strong>Social links.</strong> Links to Instagram or other external platforms are
@@ -129,7 +129,7 @@ export default function CookiePolicyPage() {
           <br />
           Dubai, United Arab Emirates
           <br />
-          Email: <a href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a>
+          Email: <a href="mailto:dottodesign.d2d@gmail.com">dottodesign.d2d@gmail.com</a>
         </p>
       </LegalPageLayout>
     </div>

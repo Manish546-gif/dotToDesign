@@ -215,7 +215,7 @@ export default function HomePage() {
           </nav>
           <div className="stack" style={{ '--stack-gap': '16px' }}>
             <ThemeToggle />
-            <p className="t-caption c-tertiary">hello@dot-todesign.com · @dot.todesign</p>
+            <p className="t-caption c-tertiary">dottodesign.d2d@gmail.com · @dot.todesign</p>
           </div>
         </div>
 
@@ -467,7 +467,7 @@ export default function HomePage() {
                 </span>
                 <h2 className="t-display-lg" id="cta-h" data-split>Let’s build your brand.</h2>
                 <p className="t-body-xl c-secondary" data-reveal>Stop blending in. Start standing out.</p>
-                <form className="cta__form" data-validate data-emailjs-type="discovery call request" data-reveal>
+                <form className="cta__form" data-validate data-email-type="discovery call request" data-reveal>
                   <div className="field">
                     <label htmlFor="cta-email">Email</label>
                     <input id="cta-email" name="email" type="email" placeholder="you@company.com" required />

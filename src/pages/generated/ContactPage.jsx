@@ -93,7 +93,7 @@ export default function ContactPage() {
                   <div data-reveal><dt className="t-bracket">(Website)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="https://dot-todesign.com">dot-todesign.com</a></dd></div>
                 </dl>
               </div>
-              <form className="contact-form" data-validate data-emailjs-type="project brief" data-success="Brief received" data-success-msg="Weâ€™ll reply within 24 hours with a Loom walkthrough." data-reveal>
+              <form className="contact-form" data-validate data-email-type="project brief" data-success="Brief received" data-success-msg="Weâ€™ll reply within 24 hours with a Loom walkthrough." data-reveal>
                 <h2 className="t-h4">Start a project</h2>
                 <div className="field"><label htmlFor="c-name">Name</label><input id="c-name" name="name" autoComplete="name" placeholder="Your full name" required /><span className="hint" data-default /></div>
                 <div className="field"><label htmlFor="c-email">Email</label><input id="c-email" name="email" type="email" autoComplete="email" placeholder="you@company.com" required /><span className="hint" data-default /></div>

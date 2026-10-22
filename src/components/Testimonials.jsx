@@ -20,6 +20,7 @@ const testimonials = [
     name: "AVC Infra Director",
     role: "AVC Infra Pvt. Ltd.",
     avatar: avatar1,
+    avatarPosition: "50% 52%",
   },
   {
     id: "02",
@@ -28,6 +29,7 @@ const testimonials = [
     name: "Arealis Founder",
     role: "Arealis",
     avatar: avatar2,
+    avatarPosition: "50% 50%",
   },
   {
     id: "03",
@@ -36,6 +38,7 @@ const testimonials = [
     name: "Praanah Wellness Founder",
     role: "Praanah Wellness",
     avatar: avatar3,
+    avatarPosition: "46% 50%",
   },
   {
     id: "04",
@@ -44,6 +47,7 @@ const testimonials = [
     name: "Mi Amour Owner",
     role: "Mi Amour",
     avatar: avatar4,
+    avatarPosition: "50% 52%",
   },
 ];
 
@@ -433,16 +437,19 @@ export default function Testimonials() {
                   </blockquote>
 
                   <div className="flex items-center gap-3 pt-2">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      decoding="async"
-                      draggable="false"
-                      className="testimonials-react__avatar w-9 h-9 sm:w-10 sm:h-10 object-cover shrink-0"
-                    />
+                    <span className="testimonials-react__avatar block h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                      <img
+                        src={testimonial.avatar}
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                        className="block h-full w-full object-cover"
+                        style={{ objectPosition: testimonial.avatarPosition }}
+                      />
+                    </span>
                     <div className="flex flex-col min-w-0">
                       <span className="testimonials-react__name truncate">
                         {testimonial.name}

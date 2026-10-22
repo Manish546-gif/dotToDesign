@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <p>
           Questions about this policy or your personal information can be sent to{" "}
-          <a href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a>.
+          <a href="mailto:dottodesign.d2d@gmail.com">dottodesign.d2d@gmail.com</a>.
         </p>
 
         <h2 className="t-h3">2. Information we collect</h2>
@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
           <li>
             <strong>Service providers.</strong> Trusted suppliers that help us run the website and
             our business, such as hosting, email delivery, cloud storage and analytics providers.
-            Our contact form is delivered through EmailJS, and the website is hosted by Vercel.
+            Our form submissions are delivered through Resend, and the website is hosted by Vercel.
           </li>
           <li>
             <strong>Professional advisers.</strong> Accountants, lawyers and insurers where needed
@@ -149,7 +149,7 @@ export default function PrivacyPolicyPage() {
           restrict the processing of your personal information, to object to certain processing,
           to withdraw consent, or to receive a portable copy of the information you provided. To
           exercise a right, email us at{" "}
-          <a href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a>. We may need to verify
+          <a href="mailto:dottodesign.d2d@gmail.com">dottodesign.d2d@gmail.com</a>. We may need to verify
           your identity before acting on a request. You may also have the right to complain to
           your local data protection authority.
         </p>
@@ -192,7 +192,7 @@ export default function PrivacyPolicyPage() {
           <br />
           Dubai, United Arab Emirates
           <br />
-          Email: <a href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a>
+          Email: <a href="mailto:dottodesign.d2d@gmail.com">dottodesign.d2d@gmail.com</a>
         </p>
       </LegalPageLayout>
     </div>
