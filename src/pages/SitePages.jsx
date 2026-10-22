@@ -6,4 +6,6 @@ export { default as Journal } from './generated/JournalPage.jsx';
 export { default as Article } from './generated/ArticlePage.jsx';
 export { default as CaseStudy } from './generated/CaseAvcInfraPage.jsx';
 export { default as Contact } from './generated/ContactPage.jsx';
+export { default as PrivacyPolicy } from './generated/PrivacyPolicyPage.jsx';
+export { default as CookiePolicy } from './generated/CookiePolicyPage.jsx';
 export { default as NotFound } from './generated/NotFoundPage.jsx';

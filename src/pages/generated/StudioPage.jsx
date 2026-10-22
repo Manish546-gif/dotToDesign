@@ -26,7 +26,7 @@ export default function StudioPage() {
           <div className="cursor__media"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" /></div>
         </div>
         <header className="header">
-          <a className="logo" href="/" aria-label="DotToDesign â€” home"><svg role="img" aria-hidden="true" focusable="false" viewBox="0 0 835 133" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <a className="logo" href="/" aria-label="DotToDesign | home"><svg role="img" aria-hidden="true" focusable="false" viewBox="0 0 835 133" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path className="logo__mark" d="M88.8799 132.9H0V115.293H88.8799V132.9Z" fill="currentColor" />
               <path className="logo__mark" fillRule="evenodd" clipRule="evenodd" d="M88.8799 62.0488C88.8803 62.1186 88.8799 62.188 88.8799 62.2578C88.8799 86.9168 68.9837 106.908 44.4404 106.908C19.8969 106.908 0 86.917 0 62.2578C0.000176491 37.5987 19.897 17.6084 44.4404 17.6084C54.5201 17.6085 63.8158 20.9809 71.2715 26.6631V0H88.8799V62.0488ZM44.4404 35.2168C29.6218 35.2168 17.6086 47.3236 17.6084 62.2578C17.6084 77.1922 29.6217 89.2998 44.4404 89.2998C59.2589 89.2996 71.2715 77.192 71.2715 62.2578C71.2713 47.3238 59.2588 35.217 44.4404 35.2168Z" fill="currentColor" />
               <path className="logo__mark" d="M150.719 0C180.24 0.000124302 204.172 23.9325 204.172 53.4541C204.172 82.6255 180.804 106.338 151.767 106.896V106.907H123.258V89.2832H151.767C171.079 88.7285 186.564 72.9003 186.564 53.4541C186.564 33.6573 170.515 17.6085 150.719 17.6084C130.922 17.6084 114.873 33.6572 114.873 53.4541V106.907H97.2646V53.2441C97.3775 23.8189 121.267 0 150.719 0Z" fill="currentColor" />
@@ -64,7 +64,7 @@ export default function StudioPage() {
           </nav>
           <div className="stack" style={{'--stack-gap': '16px'}}>
             <button className="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Dark mode" data-theme-toggle><span className="t-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg></span><span className="t-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><circle cx={12} cy={12} r={4} /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg></span></button>
-            <p className="t-caption c-tertiary">hello@dot-todesign.com Â· @dot.todesign</p>
+            <p className="t-caption c-tertiary">hello@dot-todesign.com · @dot.todesign</p>
           </div>
         </div>
         <nav className="dock" aria-label="Quick navigation">
@@ -83,27 +83,27 @@ export default function StudioPage() {
           <section className="container page-intro" style={{position: 'relative'}} aria-labelledby="studio-title">
             <div className="glow" style={{width: 1300, height: 1300, right: '-500px', top: '-700px', opacity: '.7'}} aria-hidden="true" />
             <p className="t-bracket" data-reveal>(Studio)</p>
-            <h1 className="t-display-lg" id="studio-title" data-split>We donâ€™t draw.<br />We architect.</h1>
+            <h1 className="t-display-lg" id="studio-title" data-split>We don't draw.<br />We architect.</h1>
             <div className="page-intro__row">
-              <p className="t-body-xl c-secondary" data-reveal>DotToDesign is a premium creative agency engineering luxury digital systems. We donâ€™t just design â€” we build the infrastructure for global brand equity.</p>
-              <p className="t-bracket c-tertiary" data-reveal>(Studio Â· Est. 2024)</p>
+              <p className="t-body-xl c-secondary" data-reveal>DotToDesign is a premium creative agency engineering luxury digital systems. We don't just design , we build the infrastructure for global brand equity.</p>
+              <p className="t-bracket c-tertiary" data-reveal>(Studio · Est. 2024)</p>
             </div>
           </section>
           <section className="section" aria-label="Mission and philosophy">
             <div className="container grid-2" data-reveal-group>
-              <article className="card stack" style={{'--stack-gap': '20px', padding: 48}} data-reveal><p className="t-bracket">(Our mission)</p><h2 className="t-h2">Connect a brandâ€™s vision to the world.</h2><p className="t-body-lg c-secondary">Through architectural design and technical precision â€” so a brand reads the same in Mumbai, Milan or Manhattan.</p></article>
-              <article className="card stack" style={{'--stack-gap': '20px', padding: 48}} data-reveal><p className="t-bracket">(Our philosophy)</p><h2 className="t-h2">One unified engine.</h2><p className="t-body-lg c-secondary">A premium brand needs strategy, identity and performance marketing operating as one â€” not three vendors passing files.</p></article>
+              <article className="card stack" style={{'--stack-gap': '20px', padding: 48}} data-reveal><p className="t-bracket">(Our mission)</p><h2 className="t-h2">Connect a brand's vision to the world.</h2><p className="t-body-lg c-secondary">Through architectural design and technical precision , so a brand reads the same in Mumbai, Milan or Manhattan.</p></article>
+              <article className="card stack" style={{'--stack-gap': '20px', padding: 48}} data-reveal><p className="t-bracket">(Our philosophy)</p><h2 className="t-h2">One unified engine.</h2><p className="t-body-lg c-secondary">A premium brand needs strategy, identity and performance marketing operating as one , not three vendors passing files.</p></article>
             </div>
           </section>
           <section className="section" aria-labelledby="ztl" style={{paddingTop: 0}}>
             <div className="container stack" style={{'--stack-gap': '48px'}}>
               <p className="t-bracket" data-reveal>(The Zero Translation Loss Framework)</p>
               <div className="row" style={{alignItems: 'flex-end', gap: 64, flexWrap: 'wrap'}}>
-                <article className="card stat-card" style={{maxWidth: 320}} data-reveal><p className="t-bracket">(Equity lost between vendors)</p><p className="t-numeric-lg">30â€“40%</p><p className="t-body-sm c-secondary">Typical brand equity lost when designers, developers and marketers work separately.</p></article>
+                <article className="card stat-card" style={{maxWidth: 320}} data-reveal><p className="t-bracket">(Equity lost between vendors)</p><p className="t-numeric-lg">30-40%</p><p className="t-body-sm c-secondary">Typical brand equity lost when designers, developers and marketers work separately.</p></article>
                 <h2 className="t-h3" id="ztl" style={{maxWidth: 820, flex: 1}} data-split>We eliminate the hand-offs. Strategy, identity, experience and scale come from one team, one set of engineered assets.</h2>
               </div>
               <div className="grid-4" data-reveal-group>
-                <div className="stack" style={{'--stack-gap': '16px', paddingTop: 24, borderTop: '1px solid var(--color-border-default)'}} data-reveal><p className="t-bracket c-accent">(01)</p><span className="construct"><span className="construct__title">Strategy</span><span className="construct__sub">Stage 01</span></span><p className="c-secondary">We define core values and â€œglobal appealâ€ markers.</p></div>
+                <div className="stack" style={{'--stack-gap': '16px', paddingTop: 24, borderTop: '1px solid var(--color-border-default)'}} data-reveal><p className="t-bracket c-accent">(01)</p><span className="construct"><span className="construct__title">Strategy</span><span className="construct__sub">Stage 01</span></span><p className="c-secondary">We define core values and global appealing markers.</p></div>
                 <div className="stack" style={{'--stack-gap': '16px', paddingTop: 24, borderTop: '1px solid var(--color-border-default)'}} data-reveal><p className="t-bracket c-accent">(02)</p><span className="construct"><span className="construct__title">Identity</span><span className="construct__sub">Stage 02</span></span><p className="c-secondary">A visual mark built on mathematical grids and structural integrity.</p></div>
                 <div className="stack" style={{'--stack-gap': '16px', paddingTop: 24, borderTop: '1px solid var(--color-border-default)'}} data-reveal><p className="t-bracket c-accent">(03)</p><span className="construct"><span className="construct__title">Experience</span><span className="construct__sub">Stage 03</span></span><p className="c-secondary">Brand DNA coded directly into a high-performance website.</p></div>
                 <div className="stack" style={{'--stack-gap': '16px', paddingTop: 24, borderTop: '1px solid var(--color-border-default)'}} data-reveal><p className="t-bracket c-accent">(04)</p><span className="construct"><span className="construct__title">Scale</span><span className="construct__sub">Stage 04</span></span><p className="c-secondary">Performance ads reuse the same engineered assets for maximum conversion.</p></div>
@@ -113,7 +113,7 @@ export default function StudioPage() {
           <section className="section" aria-labelledby="anatomy" style={{paddingTop: 0}}>
             <div className="container stack" style={{'--stack-gap': '40px'}}>
               <p className="t-bracket" data-reveal>(Anatomy of an engineered identity)</p>
-              <h2 className="t-h2" id="anatomy" style={{maxWidth: 1000}} data-split>Every mark we create is built on a mathematical grid â€” so it survives the test of time and scale.</h2>
+              <h2 className="t-h2" id="anatomy" style={{maxWidth: 1000}} data-split>Every mark we create is built on a mathematical grid , so it survives the test of time and scale.</h2>
               <div className="anatomy" data-anatomy aria-label="The dp monogram on its construction grid">
                 <svg className="anatomy__lines" viewBox="0 0 1360 720" preserveAspectRatio="none" aria-hidden="true">
                   <line x1={520} y1={0} x2={520} y2={720} /><line x1={560} y1={0} x2={560} y2={720} /><line x1={600} y1={0} x2={600} y2={720} /><line x1={680} y1={0} x2={680} y2={720} /><line x1={720} y1={0} x2={720} y2={720} /><line x1={760} y1={0} x2={760} y2={720} /><line x1={840} y1={0} x2={840} y2={720} />
@@ -140,12 +140,12 @@ export default function StudioPage() {
           <section className="section" aria-labelledby="os" style={{paddingTop: 0}}>
             <div className="container stack" style={{'--stack-gap': '40px'}}>
               <p className="t-bracket" data-reveal>(The DotToDesign operating system)</p>
-              <h2 className="t-h2" id="os" style={{maxWidth: 1000}} data-split>A Client Command Center with 100% visibility into your projectâ€™s health.</h2>
+              <h2 className="t-h2" id="os" style={{maxWidth: 1000}} data-split>A Client Command Center with 100% visibility into your project's health.</h2>
               <div className="grid-4" data-reveal-group>
                 <article className="card stack" style={{'--stack-gap': '14px'}} data-reveal><p className="t-bracket c-accent">(01)</p><h3 className="t-h4">Real-time updates</h3><p className="c-secondary">Weekly Loom walkthroughs and a dedicated Notion workspace.</p></article>
                 <article className="card stack" style={{'--stack-gap': '14px'}} data-reveal><p className="t-bracket c-accent">(02)</p><h3 className="t-h4">Asynchronous speed</h3><p className="c-secondary">Fast execution with zero-friction feedback loops.</p></article>
-                <article className="card stack" style={{'--stack-gap': '14px'}} data-reveal><p className="t-bracket c-accent">(03)</p><h3 className="t-h4">Full ownership</h3><p className="c-secondary">Every asset handed over with a comprehensive â€œDigital Instruction Manualâ€.</p></article>
-                <article className="card" data-reveal><p className="t-bracket">(Live)</p><div className="chat" style={{marginTop: 16}}><p className="bubble">Week 3 Loom is in Notion â€” love the grid.</p><p className="bubble bubble--out">Final vector library uploading now</p><p className="bubble bubble--typing" aria-label="Typing"><i /><i /><i /></p></div></article>
+                <article className="card stack" style={{'--stack-gap': '14px'}} data-reveal><p className="t-bracket c-accent">(03)</p><h3 className="t-h4">Full ownership</h3><p className="c-secondary">Every asset handed over with a comprehensive Digital Instruction Manual.</p></article>
+                <article className="card" data-reveal><p className="t-bracket">(Live)</p><div className="chat" style={{marginTop: 16}}><p className="bubble">Week 3 Loom is in Notion love the grid.</p><p className="bubble bubble--out">Final vector library uploading now</p><p className="bubble bubble--typing" aria-label="Typing"><i /><i /><i /></p></div></article>
               </div>
             </div>
           </section>
@@ -155,11 +155,11 @@ export default function StudioPage() {
               <div className="grid-3" data-reveal-group>
                 <article className="card" data-reveal><h3 className="t-h4">Luxury aesthetics + technical edge</h3><p className="c-secondary" style={{marginTop: 12}}>The refined visuals of an editorial magazine with the speed of a high-growth tech startup.</p></article>
                 <article className="card" data-reveal><h3 className="t-h4">Trend-aware execution</h3><p className="c-secondary" style={{marginTop: 12}}>AI-integrated design workflows and modern web development.</p></article>
-                <article className="card" data-reveal><h3 className="t-h4">Result-oriented</h3><p className="c-secondary" style={{marginTop: 12}}>Every design choice is filtered through one question: â€œDoes this drive revenue or authority?â€</p></article>
+                <article className="card" data-reveal><h3 className="t-h4">Result-oriented</h3><p className="c-secondary" style={{marginTop: 12}}>Every design choice is filtered through one question:Does this drive revenue or authority?</p></article>
               </div>
-              <p className="t-bracket" data-reveal>(Risk reversal Â· deliverables audit)</p>
+              <p className="t-bracket" data-reveal>(Risk reversal · deliverables audit)</p>
               <div className="grid-3" data-reveal-group>
-                <article className="card stat-card" data-reveal><p className="t-bracket">(Full vector library)</p><p className="t-numeric-lg">âˆž</p><p className="t-body-sm c-secondary">Responsive logo variants for every platform.</p></article>
+                <article className="card stat-card" data-reveal><p className="t-bracket">(Full vector library)</p><p className="t-numeric-lg">A-Z</p><p className="t-body-sm c-secondary">Responsive logo variants for every platform.</p></article>
                 <article className="card stat-card" data-reveal><p className="t-bracket">(Figma UI library)</p><p className="t-numeric-lg" data-count={1}>1</p><p className="t-body-sm c-secondary">A design system your internal team can actually use.</p></article>
                 <article className="card stat-card" data-reveal><p className="t-bracket">(Developer lock-in)</p><p className="t-numeric-lg" data-count={0} data-suffix="%">0%</p><p className="t-body-sm c-secondary">A fully-owned, optimised digital storefront.</p></article>
               </div>
@@ -168,7 +168,7 @@ export default function StudioPage() {
           <section className="section cta" aria-labelledby="studio-cta">
             <div className="glow" aria-hidden="true" />
             <div className="container cta__inner">
-              <h2 className="t-display-md" id="studio-cta" data-split>Letâ€™s engineer your future.</h2>
+              <h2 className="t-display-md" id="studio-cta" data-split>Let's engineer your future.</h2>
               <a className="btn" href="/contact" data-magnetic data-reveal><span className="roll">Book a discovery call</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7" /><path d="M8 7h9v9" /></svg></a>
             </div>
           </section>

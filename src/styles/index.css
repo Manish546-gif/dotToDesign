@@ -336,3 +336,43 @@ html.js [data-reveal] {
 .split-inner{
   margin-right: 0.25em;
 }
+
+/* ---- Legal pages --------------------------------------------------------- */
+.legal-body h2 {
+  margin-top: 16px;
+  color: var(--color-text-primary);
+}
+
+.legal-body ul {
+  display: grid;
+  gap: 12px;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.legal-body li {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: 1.65;
+}
+
+.legal-body li::marker {
+  color: var(--color-text-accent);
+}
+
+.legal-body strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.legal-body a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-accent);
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--easing-out);
+}
+
+.legal-body a:hover {
+  color: var(--color-text-accent);
+}

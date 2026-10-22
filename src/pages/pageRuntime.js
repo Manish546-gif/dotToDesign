@@ -11,6 +11,8 @@ const pageTitles = {
   article: 'The AVC Infra mark — DotToDesign Journal',
   'case-study': 'AVC Infra — DotToDesign Case Study',
   contact: 'Contact — DotToDesign',
+  privacy: 'Privacy Policy — DotToDesign',
+  cookies: 'Cookie Policy — DotToDesign',
   404: 'Page not found — DotToDesign',
 };
 

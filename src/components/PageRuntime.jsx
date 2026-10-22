@@ -31,15 +31,47 @@ export function mountPageRuntime(scope, page, pathname, navigate) {
   if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
 
   // ── Theme ────────────────────────────────────────────────────────────────
-  const setTheme = theme => {
+  const applyTheme = theme => {
     root.dataset.theme = theme;
     try { localStorage.setItem('dtd-theme', theme); } catch { /* optional */ }
     qa('[data-theme-toggle]').forEach(b => b.setAttribute('aria-checked', String(theme === 'dark')));
   };
+
+  // Animate the theme change as a circular reveal that grows out of the toggle
+  // button, so the whole page transitions instead of snapping. Falls back to an
+  // instant swap when View Transitions aren't available or motion is reduced.
+  const setTheme = (theme, origin) => {
+    if (reduce || !origin || typeof document.startViewTransition !== 'function') {
+      applyTheme(theme);
+      return;
+    }
+
+    const { left, top, width, height } = origin.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    root.classList.add('theme-switching');
+    const stopSwitching = () => root.classList.remove('theme-switching');
+
+    try {
+      const transition = document.startViewTransition(() => applyTheme(theme));
+      transition.ready.then(() => {
+        root.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+          { duration: 650, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', pseudoElement: '::view-transition-new(root)' }
+        );
+      }).catch(stopSwitching);
+      transition.finished.then(stopSwitching, stopSwitching);
+    } catch {
+      stopSwitching();
+      applyTheme(theme);
+    }
+  };
   let theme = root.dataset.theme || 'dark';
   try { theme = localStorage.getItem('dtd-theme') || theme; } catch { /* optional */ }
   setTheme(theme);
-  qa('[data-theme-toggle]').forEach(b => on(b, 'click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark')));
+  qa('[data-theme-toggle]').forEach(b => on(b, 'click', event => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', event.currentTarget)));
   qa('[data-nav]').forEach(link => { if (link.dataset.nav === page) link.setAttribute('aria-current', 'page'); });
 
   // Roll text init (clone inner spans for CSS hover animation)

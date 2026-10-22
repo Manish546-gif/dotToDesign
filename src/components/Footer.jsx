@@ -10,13 +10,12 @@ const NAV_COLUMNS = [
   ],
   [
     { label: "Contact", href: "/contact" },
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Cookie Policy", href: "#cookies" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
   ],
 ];
 
 const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com", target: "_blank", rel: "noopener noreferrer" },
   { label: "Instagram", href: "https://instagram.com/dot.todesign", target: "_blank", rel: "noopener noreferrer" },
 ];
 
@@ -247,14 +246,14 @@ export default function Footer({
       minute: "2-digit",
       second: "2-digit",
       hourCycle: "h23",
-      timeZone: "Europe/London",
+      timeZone: "Asia/Dubai",
     });
 
     const update = () => setTime(formatter.format(new Date()));
 
     update();
-    const interval = setInterval(update, 1000);
-    return () => clearInterval(interval);
+    const interval = window.setInterval(update, 1000);
+    return () => window.clearInterval(interval);
   }, []);
 
   const scrollToTop = (event) => {
@@ -433,7 +432,7 @@ export default function Footer({
         />
 
         {/* Bottom Bar: Clock, Copyright, Back to Top */}
-        <div className="grid gap-6 pt-8 md:grid-cols-3 md:items-center">
+        <div className="flex flex-col gap-4 pt-8 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <span className="relative flex h-2 w-2 shrink-0">
               <span
@@ -453,25 +452,27 @@ export default function Footer({
                 color: "var(--color-text-secondary)",
               }}
             >
-              ONLINE <span className="px-1 text-[var(--color-text-accent)]">→</span> BIRMINGHAM, UK {time}
+              ONLINE <span className="px-1 text-[var(--color-text-accent)]">→</span> DUBAI, UAE {time}
             </span>
           </div>
 
-          <p
-            className={`${SANS} text-center text-[clamp(0.85rem,1.1vw,1rem)] tracking-[-0.01em] text-[var(--color-text-secondary)]`}
-          >
-            {copyright}
-          </p>
+          <div className="flex flex-col items-center gap-3 md:flex-row md:gap-8">
+            <RollingLink
+              href="#main"
+              onClick={scrollToTop}
+              className={`${SANS} order-2 text-[clamp(0.85rem,1.1vw,1rem)] tracking-[-0.01em] text-[var(--color-text-secondary)] md:order-1`}
+              hoverColor="var(--color-text-accent)"
+              underlineColor="var(--color-text-accent)"
+            >
+              Back to top ↑
+            </RollingLink>
 
-          <RollingLink
-            href="#main"
-            onClick={scrollToTop}
-            className={`${SANS} text-[clamp(0.85rem,1.1vw,1rem)] tracking-[-0.01em] text-[var(--color-text-secondary)] md:justify-self-end`}
-            hoverColor="var(--color-text-accent)"
-            underlineColor="var(--color-text-accent)"
-          >
-            Back to top ↑
-          </RollingLink>
+            <p
+              className={`${SANS} order-1 text-center text-[clamp(0.85rem,1.1vw,1rem)] tracking-[-0.01em] text-[var(--color-text-secondary)] md:order-2 md:text-right`}
+            >
+              {copyright}
+            </p>
+          </div>
         </div>
       </div>
     </footer>

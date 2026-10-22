@@ -11,6 +11,8 @@ const Journal  = lazy(() => import('./pages/generated/JournalPage.jsx'));
 const Article  = lazy(() => import('./pages/generated/ArticlePage.jsx'));
 const CaseStudy = lazy(() => import('./pages/generated/CaseAvcInfraPage.jsx'));
 const Contact  = lazy(() => import('./pages/generated/ContactPage.jsx'));
+const PrivacyPolicy = lazy(() => import('./pages/generated/PrivacyPolicyPage.jsx'));
+const CookiePolicy  = lazy(() => import('./pages/generated/CookiePolicyPage.jsx'));
 const NotFound = lazy(() => import('./pages/generated/NotFoundPage.jsx'));
 
 // Minimal fallback that matches the background to avoid flash
@@ -39,6 +41,8 @@ export default function App() {
         <Route path="/article"       element={<Article />} />
         <Route path="/case-avc-infra" element={<CaseStudy />} />
         <Route path="/contact"       element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/cookie-policy"  element={<CookiePolicy />} />
         <Route path="/404"           element={<NotFound />} />
         <Route path="/index.html"    element={<Navigate to="/" replace />} />
         <Route path="*"              element={<Navigate to="/404" replace />} />

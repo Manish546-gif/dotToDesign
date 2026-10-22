@@ -26,7 +26,7 @@ export default function ContactPage() {
           <div className="cursor__media"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" /></div>
         </div>
         <header className="header">
-          <a className="logo" href="/" aria-label="DotToDesign â€” home"><svg role="img" aria-hidden="true" focusable="false" viewBox="0 0 835 133" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <a className="logo" href="/" aria-label="DotToDesign” home"><svg role="img" aria-hidden="true" focusable="false" viewBox="0 0 835 133" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path className="logo__mark" d="M88.8799 132.9H0V115.293H88.8799V132.9Z" fill="currentColor" />
               <path className="logo__mark" fillRule="evenodd" clipRule="evenodd" d="M88.8799 62.0488C88.8803 62.1186 88.8799 62.188 88.8799 62.2578C88.8799 86.9168 68.9837 106.908 44.4404 106.908C19.8969 106.908 0 86.917 0 62.2578C0.000176491 37.5987 19.897 17.6084 44.4404 17.6084C54.5201 17.6085 63.8158 20.9809 71.2715 26.6631V0H88.8799V62.0488ZM44.4404 35.2168C29.6218 35.2168 17.6086 47.3236 17.6084 62.2578C17.6084 77.1922 29.6217 89.2998 44.4404 89.2998C59.2589 89.2996 71.2715 77.192 71.2715 62.2578C71.2713 47.3238 59.2588 35.217 44.4404 35.2168Z" fill="currentColor" />
               <path className="logo__mark" d="M150.719 0C180.24 0.000124302 204.172 23.9325 204.172 53.4541C204.172 82.6255 180.804 106.338 151.767 106.896V106.907H123.258V89.2832H151.767C171.079 88.7285 186.564 72.9003 186.564 53.4541C186.564 33.6573 170.515 17.6085 150.719 17.6084C130.922 17.6084 114.873 33.6572 114.873 53.4541V106.907H97.2646V53.2441C97.3775 23.8189 121.267 0 150.719 0Z" fill="currentColor" />
@@ -64,7 +64,7 @@ export default function ContactPage() {
           </nav>
           <div className="stack" style={{'--stack-gap': '16px'}}>
             <button className="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Dark mode" data-theme-toggle><span className="t-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg></span><span className="t-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><circle cx={12} cy={12} r={4} /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg></span></button>
-            <p className="t-caption c-tertiary">hello@dot-todesign.com Â· @dot.todesign</p>
+            <p className="t-caption c-tertiary">dottodesign.d2d@gmail.com · @dot.todesign</p>
           </div>
         </div>
         <nav className="dock" aria-label="Quick navigation">
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 <h1 className="t-display-lg" id="c-title" data-split>Let Us engineer your future.</h1>
                 <p className="t-body-lg c-secondary" style={{maxWidth: 540}} data-reveal>Tell us where your brand is today and where it needs to be. We reply within 24 hours with a Loom walkthrough of next steps.</p>
                 <dl className="stack" style={{'--stack-gap': '20px'}} data-reveal-group>
-                  <div data-reveal><dt className="t-bracket">(Email)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="mailto:hello@dot-todesign.com">hello@dot-todesign.com</a></dd></div>
+                  <div data-reveal><dt className="t-bracket">(Email)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="mailto:dottodesign.d2d@gmail.com">dottodesign.d2d@gmail.com</a></dd></div>
                   <div data-reveal><dt className="t-bracket">(Instagram)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="https://instagram.com/dot.todesign" target="_blank" rel="noopener">@dot.todesign</a></dd></div>
                   <div data-reveal><dt className="t-bracket">(Website)</dt><dd style={{margin: '4px 0 0'}}><a className="t-h5" href="https://dot-todesign.com">dot-todesign.com</a></dd></div>
                 </dl>
